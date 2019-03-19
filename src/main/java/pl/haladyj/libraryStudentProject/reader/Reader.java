@@ -1,12 +1,17 @@
 package pl.haladyj.libraryStudentProject.reader;
 
-import lombok.Data;
-
+import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+//@Data
 @Table(name ="reader")
 public class Reader {
 
@@ -27,3 +32,4 @@ public class Reader {
     private Long ssn;
 
 }
+

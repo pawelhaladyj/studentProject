@@ -1,12 +1,12 @@
 package pl.haladyj.libraryStudentProject.reader;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class ReaderDto {
 
     private Long id;
