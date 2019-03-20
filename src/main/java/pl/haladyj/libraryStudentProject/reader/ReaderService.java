@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static java.lang.String.format;
 import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toDto;
 import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toEntity;
 
@@ -38,13 +39,21 @@ public class ReaderService {
         return toDto(readerRepository.save(toEntity(readerDto)));
     }
 
-    //reader found and updated in frontend
+    //reader found and updated in frontend, id not editable
     public ReaderDto updateReader (ReaderDto readerDto){
         checkNotNull(readerDto,"Expected non-empty readerDto" );
-        readerRepository.findById(readerDto.getId())
-                .orElseThrow(()-> new ReaderNotFoundException("Reader does not exist in database scope"));
+        checkByIdIfReaderExists(readerDto.getId());
         return toDto(readerRepository.save(toEntity(readerDto)));
     }
 
+    public void deleteReaderById (Long readerId){
+        checkByIdIfReaderExists(readerId);
+        readerRepository.deleteById(readerId);
+    }
 
+    private void checkByIdIfReaderExists(Long readerId) {
+        if(!readerRepository.existsById(readerId)){
+            throw new ReaderNotFoundException(format("reader of id %d does not exist", readerId));
+        }
+    }
 }
