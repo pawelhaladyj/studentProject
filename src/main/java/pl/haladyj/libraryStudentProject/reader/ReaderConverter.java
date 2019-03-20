@@ -2,14 +2,14 @@ package pl.haladyj.libraryStudentProject.reader;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ReaderConverter implements Converter<Reader, ReaderDto> {
+public class ReaderConverter {
 
     private ReaderConverter(){
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public Reader toEntity(ReaderDto readerDto) {
+
+    public static Reader toEntity(ReaderDto readerDto) {
         checkNotNull(readerDto,"Expected not null readerDto");
         Reader reader = new Reader();
 
@@ -21,8 +21,8 @@ public class ReaderConverter implements Converter<Reader, ReaderDto> {
         return reader;
     }
 
-    @Override
-    public ReaderDto toDto(Reader reader) {
+
+    public static ReaderDto toDto(Reader reader) {
         checkNotNull(reader,"Expected not null readerDto");
         ReaderDto readerDto = new ReaderDto();
 
