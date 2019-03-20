@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toDto;
+import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toEntity;
+
 @Service
 public class ReaderService {
 
@@ -25,6 +28,9 @@ public class ReaderService {
         return readerRepository.findAll().stream().map(ReaderConverter::toDto).collect(Collectors.toList());
     }
 
+    public ReaderDto createReader (ReaderDto readerDto){
+        return toDto(readerRepository.save(toEntity(readerDto)));
+    }
 
 
 }
