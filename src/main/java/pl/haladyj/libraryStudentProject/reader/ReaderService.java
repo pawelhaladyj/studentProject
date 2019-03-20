@@ -38,5 +38,13 @@ public class ReaderService {
         return toDto(readerRepository.save(toEntity(readerDto)));
     }
 
+    //reader found and updated in frontend
+    public ReaderDto updateReader (ReaderDto readerDto){
+        checkNotNull(readerDto,"Expected non-empty readerDto" );
+        readerRepository.findById(readerDto.getId())
+                .orElseThrow(()-> new ReaderNotFoundException("Reader does not exist in database scope"));
+        return toDto(readerRepository.save(toEntity(readerDto)));
+    }
+
 
 }
