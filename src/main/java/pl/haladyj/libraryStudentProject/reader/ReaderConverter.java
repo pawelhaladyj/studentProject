@@ -1,15 +1,13 @@
 package pl.haladyj.libraryStudentProject.reader;
 
+import org.springframework.stereotype.Component;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ReaderConverter {
+@Component
+public class ReaderConverter implements Converter<Reader, ReaderDto> {
 
-    private ReaderConverter(){
-        throw new UnsupportedOperationException();
-    }
-
-
-    public static Reader toEntity(ReaderDto readerDto) {
+    public Reader toEntity(ReaderDto readerDto) {
         checkNotNull(readerDto,"Expected not null readerDto");
         Reader reader = new Reader();
 
@@ -21,9 +19,9 @@ public class ReaderConverter {
         return reader;
     }
 
-
-    public static ReaderDto toDto(Reader reader) {
-        checkNotNull(reader,"Expected not null readerDto");
+    @Override
+    public ReaderDto toDto(Reader reader) {
+        checkNotNull(reader,"Expected not null reader");
         ReaderDto readerDto = new ReaderDto();
 
         readerDto.setId(reader.getId());
@@ -33,4 +31,5 @@ public class ReaderConverter {
 
         return readerDto;
     }
+
 }

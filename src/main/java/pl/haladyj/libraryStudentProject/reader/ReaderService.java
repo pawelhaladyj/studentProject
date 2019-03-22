@@ -4,30 +4,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.String.format;
-import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toDto;
-import static pl.haladyj.libraryStudentProject.reader.ReaderConverter.toEntity;
 
 @Service
 public class ReaderService {
 
     private final ReaderRepository readerRepository;
+    private final ReaderConverter readerConverter;
 
     @Autowired
-    public ReaderService(ReaderRepository readerRepository) {
+    public ReaderService(ReaderRepository readerRepository, ReaderConverter readerConverter) {
         this.readerRepository = readerRepository;
+        this.readerConverter = readerConverter;
     }
 
-    public Optional<ReaderDto> findReaderById(long readerId){
-        return readerRepository.findById(readerId).map(ReaderConverter::toDto);
+    public ReaderDto findReaderById(long readerId){
+        return readerConverter.toDto(readerRepository.findById(readerId).orElseThrow(
+                ()-> new ReaderNotFoundException(format("reader of id %d does not exist", readerId))
+        ));
     }
 
     public List<ReaderDto> findAllReaders(){
-        return readerRepository.findAll().stream().map(ReaderConverter::toDto).collect(Collectors.toList());
+        return readerRepository.findAll().stream().map(reader -> readerConverter.toDto(reader)).collect(Collectors.toList());
     }
 
     public ReaderDto createReader (ReaderDto readerDto){
@@ -36,14 +37,14 @@ public class ReaderService {
                 .ifPresent(reader -> {
                     throw new DuplicateReaderException("Reader already exists in a database scope");
                 });
-        return toDto(readerRepository.save(toEntity(readerDto)));
+        return readerConverter.toDto(readerRepository.save(readerConverter.toEntity(readerDto)));
     }
 
     //reader found and updated in frontend, id not editable
     public ReaderDto updateReader (ReaderDto readerDto){
         checkNotNull(readerDto,"Expected non-empty readerDto" );
         checkByIdIfReaderExists(readerDto.getId());
-        return toDto(readerRepository.save(toEntity(readerDto)));
+        return readerConverter.toDto(readerRepository.save(readerConverter.toEntity(readerDto)));
     }
 
     public void deleteReaderById (Long readerId){
