@@ -1,9 +1,12 @@
-pl\haladyj\libraryStudentProject\reader\ReaderController.class
+pl\haladyj\libraryStudentProject\book\Book.class
 pl\haladyj\libraryStudentProject\LibraryStudentProjectApplication.class
+pl\haladyj\libraryStudentProject\reader\Converter.class
 pl\haladyj\libraryStudentProject\reader\Reader.class
 pl\haladyj\libraryStudentProject\reader\ReaderDto.class
-pl\haladyj\libraryStudentProject\reader\ReaderService.class
 pl\haladyj\libraryStudentProject\reader\ReaderNotFoundException.class
+pl\haladyj\libraryStudentProject\author\Author.class
+pl\haladyj\libraryStudentProject\reader\ReaderController.class
+pl\haladyj\libraryStudentProject\reader\ReaderService.class
 pl\haladyj\libraryStudentProject\reader\DuplicateReaderException.class
 pl\haladyj\libraryStudentProject\reader\ReaderConverter.class
 pl\haladyj\libraryStudentProject\reader\ReaderRepository.class
