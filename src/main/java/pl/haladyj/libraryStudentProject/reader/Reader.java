@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @EqualsAndHashCode
 @ToString
-//@Data
+@Data
 @Table(name ="reader")
 public class Reader {
 

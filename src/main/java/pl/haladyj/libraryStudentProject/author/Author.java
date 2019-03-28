@@ -1,6 +1,7 @@
 package pl.haladyj.libraryStudentProject.author;
 
 import lombok.Data;
+import pl.haladyj.libraryStudentProject.book.Book;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -25,4 +26,7 @@ public class Author {
     @Column(name = "lastName")
     @NotEmpty
     private String lastName;
+
+    @ManyToOne
+    private Book book;
 }
