@@ -6,6 +6,7 @@ import pl.haladyj.libraryStudentProject.author.Author;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -21,8 +22,13 @@ public class Book {
     @NotEmpty
     private String title;
 
-    @OneToMany(mappedBy = "book")
-    private List<Author> author;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private Set<Author> author;
 
     @Column(name = "isbn")
     private String isbn;
