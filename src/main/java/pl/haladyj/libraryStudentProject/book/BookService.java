@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.String.format;
@@ -22,11 +23,13 @@ public class BookService {
     }
 
     public BookDto findById (Long id){
-        return new BookDto();
+
+        return bookConverter.toDto(bookRepository.findById(id)
+                .orElseThrow(()->new BookNotFoundException(format("book of id %d does not exist in database",id))));
     }
 
     public List<BookDto> findAll(){
-        return new ArrayList<>();
+        return bookRepository.findAll().stream().map(book -> bookConverter.toDto(book)).collect(Collectors.toList());
     }
 
     public BookDto createBook(BookDto bookDto){
