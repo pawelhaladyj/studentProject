@@ -10,30 +10,36 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final BookConverter bookConverter;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, BookConverter bookConverter) {
         this.bookRepository = bookRepository;
+        this.bookConverter = bookConverter;
     }
 
-    public Book findById (Long id){
-        return new Book();
+    public BookDto findById (Long id){
+        return new BookDto();
     }
 
-    public List<Book> findAll(){
+    public List<BookDto> findAll(){
         return new ArrayList<>();
     }
 
-    public Book create(Book book){
-        return bookRepository.save(book);
+    public BookDto create(BookDto bookDto){
+        bookRepository.findByIsbn(bookDto.getIsbn())
+                .ifPresent(book->{throw new DuplicateBookException("Book exists in database scope");});
+        return bookConverter.toDto(bookRepository.save(bookConverter.toEntity(bookDto)));
     }
 
-    public Book update(Book book){
-        return bookRepository.save(book);
+    public BookDto update(BookDto bookDto){
+        bookRepository.findByIsbn(bookDto.getIsbn())
+                .ifPresent(book->{throw new DuplicateBookException("Book exists in database scope");});
+        return bookConverter.toDto(bookRepository.save(bookConverter.toEntity(bookDto)));
     }
 
-    public void delete(Book book){
-        bookRepository.delete(book);
+    public void delete(BookDto bookDto){
+        bookRepository.deleteById(bookDto.getId());
     }
 
 

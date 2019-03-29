@@ -1,9 +1,11 @@
 package pl.haladyj.libraryStudentProject.book;
 
+import org.springframework.stereotype.Component;
 import pl.haladyj.libraryStudentProject.utils.Converter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+@Component
 public class BookConverter implements Converter <Book, BookDto> {
 
     @Override
