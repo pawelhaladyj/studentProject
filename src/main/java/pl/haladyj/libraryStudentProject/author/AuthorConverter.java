@@ -6,11 +6,23 @@ public class AuthorConverter implements Converter<Author, AuthorDto> {
 
     @Override
     public Author toEntity(AuthorDto authorDto) {
-        return null;
+        Author author = new Author();
+        author.setId(authorDto.getId());
+        author.setFirstName(authorDto.getFirstName());
+        author.setMiddleName(authorDto.getMiddleName());
+        author.setLastName(authorDto.getLastName());
+        author.setBooks(authorDto.getBooks());
+        return author;
     }
 
     @Override
     public AuthorDto toDto(Author author) {
-        return null;
+        AuthorDto authorDto = new AuthorDto();
+        authorDto.setId(author.getId());
+        authorDto.setFirstName(author.getFirstName());
+        authorDto.setMiddleName(author.getMiddleName());
+        authorDto.setLastName(author.getLastName());
+        authorDto.setBooks(author.getBooks());
+        return authorDto;
     }
 }
