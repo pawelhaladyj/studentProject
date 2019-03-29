@@ -1,6 +1,7 @@
 package pl.haladyj.libraryStudentProject.reader;
 
 import org.springframework.stereotype.Component;
+import pl.haladyj.libraryStudentProject.utils.Converter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
