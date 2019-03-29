@@ -29,14 +29,14 @@ public class BookService {
         return new ArrayList<>();
     }
 
-    public BookDto create(BookDto bookDto){
+    public BookDto createBook(BookDto bookDto){
         checkNotNull(bookDto, "Expected not empty BookDto");
         bookRepository.findByAuthorAndTitle(bookDto.getAuthor(),bookDto.getTitle())
                 .ifPresent(book->{throw new DuplicateBookException("Book exists in database scope");});
         return bookConverter.toDto(bookRepository.save(bookConverter.toEntity(bookDto)));
     }
 
-    public BookDto update(BookDto bookDto){
+    public BookDto updateBook(BookDto bookDto){
         checkNotNull(bookDto, "Expected not empty BookDto");
         if(!bookRepository.existsById(bookDto.getId())){
             throw new BookNotFoundException(format("book of id %d does not exist",bookDto.getId()));
@@ -44,9 +44,12 @@ public class BookService {
         return bookConverter.toDto(bookRepository.save(bookConverter.toEntity(bookDto)));
     }
 
-    public void delete(BookDto bookDto){
+    public void deleteBook(BookDto bookDto){
+        checkNotNull(bookDto, "Expected not empty BookDto");
+        if(!bookRepository.existsById(bookDto.getId())){
+            throw new BookNotFoundException(format("book of id %d does not exist",bookDto.getId()));
+        }
         bookRepository.deleteById(bookDto.getId());
     }
-
 
 }
