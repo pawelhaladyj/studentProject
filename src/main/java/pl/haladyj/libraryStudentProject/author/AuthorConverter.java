@@ -1,7 +1,9 @@
 package pl.haladyj.libraryStudentProject.author;
 
+import org.springframework.stereotype.Component;
 import pl.haladyj.libraryStudentProject.utils.Converter;
 
+@Component
 public class AuthorConverter implements Converter<Author, AuthorDto> {
 
     @Override
