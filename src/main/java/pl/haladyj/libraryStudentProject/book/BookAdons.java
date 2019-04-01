@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class BookAdons {
     private double weight;
-    private double hight;
+    private double height;
     private double width;
     private double depth;
     private int publishYear;

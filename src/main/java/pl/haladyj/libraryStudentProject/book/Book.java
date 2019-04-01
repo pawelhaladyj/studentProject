@@ -33,6 +33,9 @@ public class Book {
     @Column(name = "isbn")
     private String isbn;
 
+    @OneToMany(mappedBy = "book")
+    private Set<Specimen> specimens;
+
     @Embedded
     private BookAdons bookAdons;
 }
