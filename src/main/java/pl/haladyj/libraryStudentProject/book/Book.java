@@ -32,4 +32,7 @@ public class Book {
 
     @Column(name = "isbn")
     private String isbn;
+
+    @Embedded
+    private BookAdons bookAdons;
 }
