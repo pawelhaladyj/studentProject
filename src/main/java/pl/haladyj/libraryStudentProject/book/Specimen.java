@@ -19,4 +19,6 @@ public class Specimen {
     @Embedded
     private SpecimenAdons specimenAdons;
 
+    private boolean isAvailable;
+
 }
