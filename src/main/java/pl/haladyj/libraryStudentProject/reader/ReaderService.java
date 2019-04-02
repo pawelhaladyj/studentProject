@@ -35,7 +35,7 @@ public class ReaderService {
         checkNotNull(readerDto, "Expected non-empty readerDto");
         readerRepository.findByFirstNameAndLastName(readerDto.getFirstName(),readerDto.getLastName())
                 .ifPresent(reader -> {
-                    throw new DuplicateReaderException("Reader already exists in a database scope");
+                    throw new DuplicateReaderException("reader already exists in a database scope");
                 });
         return readerConverter.toDto(readerRepository.save(readerConverter.toEntity(readerDto)));
     }

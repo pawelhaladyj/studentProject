@@ -20,5 +20,6 @@ public class Specimen {
     private SpecimenAdons specimenAdons;
 
     private boolean isAvailable;
+    private boolean isReserved;
 
 }
