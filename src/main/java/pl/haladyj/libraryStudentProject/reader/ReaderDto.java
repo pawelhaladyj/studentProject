@@ -12,6 +12,7 @@ public class ReaderDto {
     private Long id;
     private String firstName;
     private String lastName;
-    private Long ssn;
+    private String ssn;
+    private String phoneNumber;
 
 }
