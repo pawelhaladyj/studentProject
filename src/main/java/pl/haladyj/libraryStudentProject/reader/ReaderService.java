@@ -28,7 +28,13 @@ public class ReaderService {
     }
 
     public List<ReaderDto> findAllReaders(){
-        return readerRepository.findAll().stream().map(reader -> readerConverter.toDto(reader)).collect(Collectors.toList());
+        return readerRepository
+                .findAll()
+                .stream()
+                .map(reader -> readerConverter
+                        .toDto(reader))
+                .collect(Collectors
+                        .toList());
     }
 
     public ReaderDto createReader (ReaderDto readerDto){

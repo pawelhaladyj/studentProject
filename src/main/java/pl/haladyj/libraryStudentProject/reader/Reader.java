@@ -29,7 +29,7 @@ public class Reader {
     private String lastName;
 
     @Column(name = "ssn")
-    private Long ssn;
+    private String ssn;
 
 }
 

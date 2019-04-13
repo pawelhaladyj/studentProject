@@ -23,24 +23,24 @@ import static org.mockito.Mockito.when;
 public class ReaderServiceTest {
 
     static Reader[] testReader ={
-            new Reader(1L, "Ian", "White", 1231L),
-            new Reader(2L, "Zoe", "Brown", 1232L),
-            new Reader(3L, "Ron", "Black", 1233L),
-            new Reader(4L, "Nash", "Blue", 1234L),
+            new Reader(1L, "Ian", "White", "12345678901"),
+            new Reader(2L, "Zoe", "Brown", "12345678902"),
+            new Reader(3L, "Ron", "Black", "12345678903"),
+            new Reader(4L, "Nash", "Blue", "12345678904"),
     };
 
     static ReaderDto[] testReaderDto ={
-            new ReaderDto(1L, "Ian", "White", 1231L),
-            new ReaderDto(2L, "Zoe", "Brown", 1232L),
-            new ReaderDto(3L, "Ron", "Black", 1233L),
-            new ReaderDto(4L, "Nash", "Blue", 1234L),
+            new ReaderDto(1L, "Ian", "White", "12345678901"),
+            new ReaderDto(2L, "Zoe", "Brown", "12345678902"),
+            new ReaderDto(3L, "Ron", "Black", "12345678903"),
+            new ReaderDto(4L, "Nash", "Blue", "12345678904"),
     };
 
 
     @Rule public ExpectedException expectedException = ExpectedException.none();
     private ReaderService readerService;
     @MockBean private ReaderRepository readerRepository;
-    private ReaderConverter readerConverter;
+    @MockBean private ReaderConverter readerConverter ;
 
     @Before
     public void setUp() throws Exception {
@@ -57,7 +57,7 @@ public class ReaderServiceTest {
 
     @Test
     public void findAllReaders() {
-        Reader givenReader1 =testReader[0];
+                Reader givenReader1 =testReader[0];
         Reader givenReader2 =testReader[1];
         ReaderDto expectedReaderDto1 =testReaderDto[0];
         ReaderDto expectedReaderDto2 =testReaderDto[1];
@@ -65,7 +65,7 @@ public class ReaderServiceTest {
         List<Reader> expectedReaders = newArrayList(givenReader1,givenReader2);
         when(readerRepository.findAll()).thenReturn(expectedReaders);
 
-        List<ReaderDto> actualReaderDtos =readerService.findAllReaders();
+        List<ReaderDto> actualReaderDtos = readerService.findAllReaders();
 
         assertThat(actualReaderDtos, hasSize(2));
         assertThat(actualReaderDtos, hasItems(expectedReaderDto1, expectedReaderDto2));
