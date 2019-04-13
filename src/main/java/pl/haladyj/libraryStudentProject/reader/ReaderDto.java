@@ -13,5 +13,6 @@ public class ReaderDto {
     private String firstName;
     private String lastName;
     private String ssn;
+    private String phoneNumber;
 
 }

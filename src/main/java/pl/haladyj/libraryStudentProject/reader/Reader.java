@@ -31,5 +31,8 @@ public class Reader {
     @Column(name = "ssn")
     private String ssn;
 
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
+
 }
 

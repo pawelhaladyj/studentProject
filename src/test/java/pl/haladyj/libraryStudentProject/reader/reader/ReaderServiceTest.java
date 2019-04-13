@@ -23,17 +23,17 @@ import static org.mockito.Mockito.when;
 public class ReaderServiceTest {
 
     static Reader[] testReader ={
-            new Reader(1L, "Ian", "White", "12345678901"),
-            new Reader(2L, "Zoe", "Brown", "12345678902"),
-            new Reader(3L, "Ron", "Black", "12345678903"),
-            new Reader(4L, "Nash", "Blue", "12345678904"),
+            new Reader(1L, "Ian", "White", "12345678901","815253666"),
+            new Reader(2L, "Zoe", "Brown", "12345678902","601253667"),
+            new Reader(3L, "Ron", "Black", "12345678903","125253668"),
+            new Reader(4L, "Nash", "Blue", "12345678904","025253669"),
     };
 
     static ReaderDto[] testReaderDto ={
-            new ReaderDto(1L, "Ian", "White", "12345678901"),
-            new ReaderDto(2L, "Zoe", "Brown", "12345678902"),
-            new ReaderDto(3L, "Ron", "Black", "12345678903"),
-            new ReaderDto(4L, "Nash", "Blue", "12345678904"),
+            new ReaderDto(1L, "Ian", "White", "12345678901","815253666"),
+            new ReaderDto(2L, "Zoe", "Brown", "12345678902","601253667"),
+            new ReaderDto(3L, "Ron", "Black", "12345678903","125253668"),
+            new ReaderDto(4L, "Nash", "Blue", "12345678904","025253669"),
     };
 
 
