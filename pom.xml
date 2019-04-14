@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.haladyj</groupId>
 	<artifactId>libraryStudentProject</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<name>libraryStudentProject</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -22,6 +22,7 @@
 		<junit.version>4.12</junit.version>
 		<guava.version>19.0</guava.version>
 		<lombok.version>1.18.2</lombok.version>
+		<opencsv.version>4.5</opencsv.version>
 	</properties>
 
 	<dependencies>
@@ -71,6 +72,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>4.5</version>
 		</dependency>
 	</dependencies>
 
