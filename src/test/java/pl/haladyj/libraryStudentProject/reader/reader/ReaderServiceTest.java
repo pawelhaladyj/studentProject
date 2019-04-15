@@ -40,7 +40,7 @@ public class ReaderServiceTest {
     @Rule public ExpectedException expectedException = ExpectedException.none();
     private ReaderService readerService;
     @MockBean private ReaderRepository readerRepository;
-    @MockBean private ReaderConverter readerConverter ;
+    private ReaderConverter readerConverter = new ReaderConverter() ;
 
     @Before
     public void setUp() throws Exception {
