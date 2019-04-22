@@ -107,6 +107,21 @@ public class ReaderServiceTest {
         assertFalse(readerRepository.existsById(notExistingReaderId));
     }
 
+    @Test
+    public void createReader() {
+        Reader reader = new Reader(null, "Ian", "White", "12345678901","815253666");
+        Reader savedReader = testReader[0];
+        ReaderDto readerDto = new ReaderDto(null, "Ian", "White", "12345678901","815253666");
+        ReaderDto expectedReaderDto = testReaderDto[0];
+        when(readerRepository.save(reader)).thenReturn(savedReader);
+
+        ReaderDto savedReaderDto = readerService.createReader(readerDto);
+
+        assertEquals(savedReaderDto,expectedReaderDto);
+    }
+
+
+
 /*    @Test(expected = DuplicateReaderException.class)
     public void createReaderThatAlreadyExists(){
         Reader givenReader = testReader[0];
@@ -119,17 +134,7 @@ public class ReaderServiceTest {
     }*/
 
 
-    @Test
-    public void createReader() {
-        Reader reader = new Reader(null, "Ian", "White", "12345678901","815253666");
-        Reader savedReader = testReader[0];
-        ReaderDto readerDto = new ReaderDto(null, "Ian", "White", "12345678901","815253666");
-        ReaderDto expectedReaderDto = testReaderDto[0];
 
-        ReaderDto savedReaderDto = readerService.createReader(readerDto);
-
-        assertEquals(savedReaderDto,expectedReaderDto);
-    }
 
     @Test
     public void updateReader() {
