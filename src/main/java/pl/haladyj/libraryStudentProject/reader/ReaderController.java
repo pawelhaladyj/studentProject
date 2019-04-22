@@ -50,9 +50,9 @@ public class ReaderController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateReader(@RequestParam("map") String updatedReader){
         Gson gson = new Gson();
-        Reader reader = gson.fromJson(updatedReader, Reader.class);
+        ReaderDto readerDto = gson.fromJson(updatedReader, ReaderDto.class);
 
-        readerService.updateReader(reader);
+        readerService.updateReader(readerDto);
 
         return ResponseEntity.noContent().build();
     }

@@ -119,7 +119,7 @@ public class ReaderServiceTest {
     }*/
 
 
-/*    @Test
+    @Test
     public void createReader() {
         Reader reader = new Reader(null, "Ian", "White", "12345678901","815253666");
         Reader savedReader = testReader[0];
@@ -129,10 +129,12 @@ public class ReaderServiceTest {
         ReaderDto savedReaderDto = readerService.createReader(readerDto);
 
         assertEquals(savedReaderDto,expectedReaderDto);
-    }*/
+    }
 
     @Test
     public void updateReader() {
+
+
     }
 
     @Test

@@ -47,10 +47,10 @@ public class ReaderService {
     }
 
     //reader found and updated in frontend, id not editable
-    public Reader updateReader (Reader reader){
-        checkNotNull(reader,"Expected non-empty readerDto" );
-        checkByIdIfReaderExists(reader.getId());
-        return readerRepository.save(reader);
+    public ReaderDto updateReader (ReaderDto readerDto){
+        checkNotNull(readerDto,"Expected non-empty readerDto" );
+        checkByIdIfReaderExists(readerDto.getId());
+        return readerConverter.toDto(readerRepository.save(readerConverter.toEntity(readerDto)));
     }
 
     public void deleteReaderById (Long readerId){
